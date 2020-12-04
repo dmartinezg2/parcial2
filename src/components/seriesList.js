@@ -3,7 +3,8 @@ import Job from "./series";
 import {FormattedMessage} from 'react-intl';
 export default class JobsList extends React.Component {
 
-  state = { 
+  
+  enState = { 
   	"offers": [
         {
           "id": 1,
@@ -62,7 +63,78 @@ export default class JobsList extends React.Component {
       ]
   };
 
+  esState = { 
+  	"offers": [
+      {
+        "id": 1,
+        "name": "Breaking Bad",
+        "channel": "AMC",
+        "seasons": 5,
+        "description": "Ambientada y filmada en Albuquerque, Nuevo México, la serie cuenta la historia de Walter White, un profesor de química de escuela secundaria deprimido y en apuros a quien se le diagnostica cáncer de pulmón.",
+        "webpage": "https://www.amc.com/shows/breaking-bad",
+        "poster": "https://i.imgur.com/GGje0vc.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Orange Is the New Black",
+        "channel": "Netflix",
+        "seasons": 6,
+        "description": "La serie gira en torno a Piper Chapman, una mujer de unos treinta años que vive en la ciudad de Nueva York y que es sentenciada a 15 meses en la penitenciaría de Litchfield.",
+        "webpage": "https://www.netflix.com/co/title/70242311",
+        "poster": "https://i.imgur.com/EvKe48G.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Juego de Tronos",
+        "channel": "HBO",
+        "seasons": 7,
+        "description": "Serie inspirada en la saga Canción de hielo y fuego, escrita por George R. R. Martin. Relata las vivencias de un grupo de personajes de distintas casas nobiliarias en el continente ficticio de Poniente para tener el control del Trono de Hierro y gobernar los siete reinos que conforman el territorio.",
+        "webpage": "https://www.hbo.com/game-of-thrones",
+        "poster": "https://i.imgur.com/TDCEV1S.jpg"
+      },
+      {
+        "id": 4,
+        "name": "The Big Bang Theory",
+        "channel": "CBS",
+        "seasons": 12,
+         "description": "En el curso de la serie se muestra la dificultad de los protagonistas masculinos para relacionarse con personas de fuera de su entorno, principalmente de sexo femenino, dando lugar a situaciones cómicas.",
+        "webpage": "https://www.cbs.com/shows/big_bang_theory/about/",
+        "poster": "https://i.imgur.com/uAEpVWk.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Sherlock",
+        "channel": "BBC",
+        "seasons": 4,
+        "description": "Sherlock representa al detective consultor Sherlock Holmes resolviendo varios misterios en el Londres actual.",
+        "webpage": "https://www.bbc.co.uk/programmes/b018ttws",
+        "poster": "https://i.imgur.com/02B7qhj.jpg"
+      },
+      {
+        "id": 6,
+        "name": "A Very English Scandal",
+        "channel": "BBC",
+        "seasons": 2,
+        "description": "Narra uno de los eventos más llamativos de la política inglesa de la segunda mitad del siglo XX.",
+        "webpage": "https://www.bbc.co.uk/programmes/p065smy4",
+        "poster": "https://i.imgur.com/D4y3DrQ.jpg"
+      }
+    ]
+  };
   render() {
+    let state="";
+    function getBrowserLang(){
+      const lang =  navigator.language || navigator.userLanguage;
+      console.log(lang);
+      return lang;
+    }
+    let lang =getBrowserLang();
+        if(lang === "en"){
+          state=this.esState;
+        }
+        else{
+          state=this.enState;
+        }
     return (
       <div>
         <table className="table table-striped">
@@ -75,7 +147,7 @@ export default class JobsList extends React.Component {
             </tr>
           </thead>
           <tbody>
-              {this.state.offers.map( (e,i) => <Job key={i} offer={e}/>)}
+              {this.esState.offers.map( (e,i) => <Job key={i} offer={e}/>)}
           </tbody>
         </table>
       </div>
