@@ -1,5 +1,5 @@
 import React from 'react';
-import Job from "./jobs";
+import Job from "./series";
 import {FormattedMessage} from 'react-intl';
 export default class JobsList extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import JobsList from './components/jobsList'
+import JobsList from './components/seriesList'
 
 import './App.css';
 
